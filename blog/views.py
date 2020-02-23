@@ -90,10 +90,11 @@ def submit_n_m(request):
 
         # TODO: Распечатать тут все, что пришло в POST
         print(mem)
-        print('n = ', n, end= ' ')
         print('m = ', m, end=' ')
         print('cell_changed = ', cell_changed, end=' ')
         print("table_id={}".format(table_id))
+        print('n = ', n, end= ' ')
+
 
         # TODO: проверить, есть ли уже в базе
         # Table_cells с такими же n,m и таблицей
