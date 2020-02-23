@@ -1,6 +1,8 @@
 from django.urls import path
 from . import views
 
+# TODO: удалить страницы, которые не используются, в том числе про блоги из Django girls
+
 urlpatterns = [
     path('', views.post_list, name='post_list'),
     path('post/<int:pk>/', views.post_detail, name='post_detail'),

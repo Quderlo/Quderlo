@@ -6,6 +6,9 @@ from django.shortcuts import render, get_object_or_404
 from .forms import PostForm
 from django.shortcuts import redirect
 
+
+# TODO: удалить views, которые не используеются, в том числе все из курсе django girl
+
 def submit(request):
     dic = request.POST
     print(dic['m'])
@@ -16,6 +19,7 @@ def submit(request):
         Table_cells.n = dic['n']
         Table_cells.m = dic['m']
     return render(request, 'blog/sub_form.html', {'n': dic['n'], 'm': dic['m'], 'cell': dic['cell']})
+
 
 def post_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
@@ -60,6 +64,7 @@ def table_list(request):
     tables = Table.objects.filter(created_date__lte=timezone.now()).order_by('created_date')
     return render(request, 'blog/table_list.html', {'tables': tables})
 
+
 def table_list_n_m(request):
     tables = Table.objects.filter(created_date__lte=timezone.now()).order_by('created_date')
     return render(request, 'blog/table_list_n_m.html', {'tables': tables})
@@ -94,7 +99,7 @@ def submit_n_m(request):
         # Table_cells с такими же n,m и таблицей
         # заполнить переменную
 
-        is_cell_exists = Table_cells.objects.filter(table__id = table_id, n = n, m = m).count()
+        is_cell_exists = Table_cells.objects.filter(table__id=table_id, n=n, m=m).count()
         print(is_cell_exists)
         if is_cell_exists:
             # print("Существует")

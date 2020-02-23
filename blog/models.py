@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.utils import timezone
 from django.db import models
+# TODO: удалить модели, которые не используеются, в том числе все из курсе django girl
 
 
 class Blog(models.Model):
