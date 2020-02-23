@@ -90,10 +90,10 @@ def submit_n_m(request):
 
         # TODO: Распечатать тут все, что пришло в POST
         print(mem)
+        print('n = ', n, end=' ')
         print('m = ', m, end=' ')
         print('cell_changed = ', cell_changed, end=' ')
         print("table_id={}".format(table_id))
-        print('n = ', n, end= ' ')
 
 
         # TODO: проверить, есть ли уже в базе
@@ -109,7 +109,7 @@ def submit_n_m(request):
             new_cell = Table_cells.objects.update(n=n, m=m, cell=cell_changed, table=table)
             # сохранить ее
         else:
-            print("Не Существует")
+            print("Не Существует") 
             # создать новый объект Table_cells
             table = Table.objects.get(id=table_id)
             new_cell = Table_cells.objects.create(n=n, m=m, cell=cell_changed, table=table)
