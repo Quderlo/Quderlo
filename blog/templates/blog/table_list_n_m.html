@@ -1,0 +1,41 @@
+
+
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    {% for post in tables %}
+        <h1>
+            <div class="post">
+                <div class="date">
+                    {{ post.created_date }}
+                    n = {{ post.n }}
+                    m = {{ post.m }}
+                    <table class="table table-dark">
+                        <tbody>
+                        {% for j in post.fun_n_m %}
+                            {% if j.m == 0 %}
+                                </tr>
+                                <tr>
+                            {% endif %}
+                            <th>
+                            <form action="http://127.0.0.1:8000/table/n_m/submit"
+                                  method="POST" class="post-form" id="{{ j.n }}-{{ j.m }}-{{ post.id }}"  >
+                                <div class="form-check" >
+                                    <input type="hidden" name="id" value="{{ post.id }}">
+                                    <input type="hidden" name="m" value="{{ j.m }}">
+                                    <input type="hidden" name="n" value="{{ j.n }}">
+                                    <input type="hidden" name="cell" value="{{ j.cell }}">
+                                    <input type="hidden" name="table_id" value="{{ post.id }}">
+                                    <input type="text" class="form-control" name="cell_changed" maxlength="1" value={{ j.cell }}>
+                                </div>
+                                <button type="submit"  class="btn btn-primary">{{ post.id }}-{{ j.n }} - {{ j.m }} - {{ j.cell }}</button>
+                            </form>
+                            </th>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </h1>
+    {% endfor %}
+{% endblock %}
